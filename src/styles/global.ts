@@ -6,6 +6,7 @@ export default createGlobalStyle`
     --background: #F0F0F5;
     --dark:#000;
     --white:#FFF;
+    --title:#3D3D4D;
     
     --smal:12px;
     --regular:14px;
