@@ -8,7 +8,7 @@ import MemberDetails from "../pages/MemberDetails";
 const Routes: React.FC = () => (
     <Switch >
         <Route exact path="/"  component={Home}/>
-        <Route path="/members"  component={Members}/>
+        <Route path="/public_members/orgs/:org"  component={Members}/>
         <Route path="/:login"  component={MemberDetails}/>
     </Switch >
 )
