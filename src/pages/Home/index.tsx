@@ -1,5 +1,4 @@
 import React from "react";
-
 import {Title} from "../../styles/global";
 import Card from "../../components/Card";
 

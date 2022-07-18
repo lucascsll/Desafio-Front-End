@@ -3,7 +3,7 @@ import {FiChevronRight} from "react-icons/fi";
 import {Cards} from "./styles";
 
 interface CardProps{
-    urlImg:string;
+    urlImg?:string;
     login:string
     path?:string
 }
@@ -20,10 +20,7 @@ const Card:React.FC<CardProps> = ({urlImg,login,path}) => {
                 </a>
             </Cards>
         </>
-
         )
-
-
 };
 
 export default Card;
