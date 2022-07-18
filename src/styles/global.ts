@@ -47,5 +47,13 @@ color: var(--dark);
 margin-top: 80px;
 `
 
+export const Error = styled.div`
+font-size: 10px;
+color: var(--title);
+display: flex;
+  align-items: center;
+  justify-content: center;
+`
+
 
 
