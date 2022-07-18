@@ -1,7 +1,12 @@
 import React from "react";
+import {Title} from "../../styles/global";
 
 const MemberDetails:React.FC = () => {
-    return <h1>MemberDetails</h1>;
+    return (
+        <>
+            <Title>Members</Title>;
+        </>
+    )
 };
 
 export default MemberDetails;
