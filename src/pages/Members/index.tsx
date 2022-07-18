@@ -49,7 +49,7 @@ const Members:React.FC = () => {
             <Title>Members</Title>;
             <InputSearch value={search} onChange={(value)=>filterMembers(value.target.value)} name='search'  />
             {Members.map(member=>(
-                <Card key={member.login} urlImg={member.avatar_url} login={member.login} path='/lucas'  />
+                <Card key={member.login} urlImg={member.avatar_url} login={member.login} path={`/users/${member.login}`}  />
             ))}
 
             {error && <Error>{error}</Error> }
