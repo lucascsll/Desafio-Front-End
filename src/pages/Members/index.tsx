@@ -4,6 +4,7 @@ import Card from "../../components/Card";
 import InputSearch from "../../components/InputSearch";
 import api from "../../services/api";
 import {useParams} from "react-router-dom";
+import {MessagesError} from "../../helpers/messages.helper";
 
 interface Members{
     avatar_url:string;
@@ -23,7 +24,7 @@ const Members:React.FC = () => {
             const response = await api.get(`orgs/${org}/public_members`)
             setMembers(response.data)
         }catch (e) {
-            setError('Falha ao buscar membros do grupo !')
+            setError(MessagesError.API_FAIL_MEMBER_GROUP)
         }
 
     }
@@ -37,21 +38,19 @@ const Members:React.FC = () => {
         return itemData.indexOf(textValue) > -1
         })
         setMembers(newMembers)
-
     }
 
-    useEffect( ()=>{
+    useEffect( () => {
         fetch()
     },[])
 
     return(
         <>
-            <Title>Members</Title>;
+            <Title>Membros</Title>;
             <InputSearch value={search} onChange={(value)=>filterMembers(value.target.value)} name='search'  />
             {Members.map(member=>(
-                <Card key={member.login} urlImg={member.avatar_url} login={member.login} path={`/users/${member.login}`}  />
+                <Card key={member.login} urlImg={member.avatar_url} login={member.login} path={`/users/${member.login}`} isIcon={true} />
             ))}
-
             {error && <Error>{error}</Error> }
         </>
     )
