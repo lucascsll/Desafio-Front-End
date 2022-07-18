@@ -42,16 +42,16 @@ export default createGlobalStyle`
 `
 
 export const Title = styled.h1`
-font-size: 48px;
-color: var(--title);
-margin-top: 80px;
+  font-size: 48px;
+  color: var(--title);
+  margin-top: 80px;
 `
 
 export const Error = styled.div`
   margin-top: 80px;  
-font-size: 26px;
-color: var(--title);
-display: flex;
+  font-size: 26px;
+  color: var(--title);
+  display: flex;
   align-items: center;
   justify-content: center;
 `

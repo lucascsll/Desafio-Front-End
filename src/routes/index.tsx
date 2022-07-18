@@ -6,11 +6,11 @@ import Members from "../pages/Members";
 import MemberDetails from "../pages/MemberDetails";
 
 const Routes: React.FC = () => (
-    <Switch >
+    <Switch>
         <Route exact path="/"  component={Home}/>
-        <Route path="/public_members/orgs/:org"  component={Members}/>
+        <Route  path="/public_members/orgs/:org"  component={Members}/>
         <Route path="/users/:login"  component={MemberDetails}/>
-    </Switch >
+    </Switch>
 )
 export default Routes
 

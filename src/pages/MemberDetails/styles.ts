@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const USerInfo = styled.section`
-margin-top: 80px;
+  margin-top: 80px;
   
   header{
     display: flex;
@@ -49,7 +49,6 @@ margin-top: 80px;
         margin-top: 4px;
         color: #6c6c80;
       }
-      
     }
   }
   

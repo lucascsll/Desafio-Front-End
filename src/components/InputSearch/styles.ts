@@ -3,7 +3,7 @@ import { shade } from 'polished'
 
 export const Form = styled.form`
 
-    margin-top: 40px;
+  margin-top: 40px;
   max-width: 700px;
   display: flex;
   
