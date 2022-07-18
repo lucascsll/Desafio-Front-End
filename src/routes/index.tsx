@@ -9,7 +9,7 @@ const Routes: React.FC = () => (
     <Switch >
         <Route exact path="/"  component={Home}/>
         <Route path="/public_members/orgs/:org"  component={Members}/>
-        <Route path="/:login"  component={MemberDetails}/>
+        <Route path="/users/:login"  component={MemberDetails}/>
     </Switch >
 )
 export default Routes
