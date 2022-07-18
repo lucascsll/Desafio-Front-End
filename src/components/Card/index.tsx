@@ -6,8 +6,9 @@ interface CardProps{
     urlImg?:string;
     login:string
     path?:string
+    isIcon?:boolean
 }
-const Card:React.FC<CardProps> = ({urlImg,login,path}) => {
+const Card:React.FC<CardProps> = ({urlImg,login,path,isIcon}) => {
     return (
         <>
             <Cards>
@@ -16,7 +17,8 @@ const Card:React.FC<CardProps> = ({urlImg,login,path}) => {
                     <div>
                         <strong>{login}</strong>
                     </div>
-                    <FiChevronRight size={20}/>
+                    {isIcon && <FiChevronRight size={20}/> }
+
                 </a>
             </Cards>
         </>
