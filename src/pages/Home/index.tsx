@@ -6,9 +6,9 @@ const Home:React.FC = () => {
 return(
     <>
         <Title>Grupos do GitHub</Title>;
-        <Card urlImg='https://avatars.githubusercontent.com/u/139426?s=200&v=4' path='public_members/orgs/angular' login='Angular' isIcon={true}/>
-        <Card urlImg='https://avatars.githubusercontent.com/u/69631?s=200&v=4' path='public_members/orgs/facebook' login='Meta' isIcon={true}/>
-        <Card urlImg='https://avatars.githubusercontent.com/u/6128107?s=200&v=4' path='public_members/orgs/vuejs' login='Vue' isIcon={true}/>
+        <Card urlImg='https://avatars.githubusercontent.com/u/139426?s=200&v=4' path='public_members/orgs/angular' name='Angular' isIcon={true}/>
+        <Card urlImg='https://avatars.githubusercontent.com/u/69631?s=200&v=4' path='public_members/orgs/facebook' name='Meta' isIcon={true}/>
+        <Card urlImg='https://avatars.githubusercontent.com/u/6128107?s=200&v=4' path='public_members/orgs/vuejs' name='Vue' isIcon={true}/>
     </>
 )
 };
