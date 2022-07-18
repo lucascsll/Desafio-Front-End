@@ -12,7 +12,7 @@ const Card:React.FC<CardProps> = ({urlImg,login,path}) => {
         <>
             <Cards>
                 <a href={path}>
-                <img src={urlImg} alt="angular"/>
+                    {urlImg && <img src={urlImg} alt="angular"/> }
                     <div>
                         <strong>{login}</strong>
                     </div>
