@@ -1,11 +1,11 @@
-import React,{InputHTMLAttributes} from "react";
-import {Form} from "./styles";
+import React,{ InputHTMLAttributes } from "react";
+import { Form } from "./styles";
 
 interface InputProps extends InputHTMLAttributes<HTMLInputElement>  {
-    name:string
+    name: string;
 }
 
-const InputSearch:React.FC<InputProps> = (props) => {
+const InputSearch:React.FC <InputProps> = ( props) => {
     return (
         <Form>
             <input {...props} placeholder='Filtrar por login'/>

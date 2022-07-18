@@ -4,6 +4,7 @@ import {Title} from "../../styles/global";
 import Card from "../../components/Card";
 import {useParams} from "react-router-dom";
 import api from "../../services/api";
+import {dateFormat} from "../../helpers/data.format";
 
 
 interface Users{
@@ -20,12 +21,9 @@ interface Followers{
 }
 
 const MemberDetails:React.FC = () => {
-
-    const [User,setUSer] = useState<Users  | null >(null)
+    const [user,setUSer] = useState<Users  | null >(null)
     const [followers,setfollowers] = useState<Followers[] >([])
-    const [error,setError] = useState('')
     let { login } : any  = useParams();
-
 
     useEffect( ()=>{
         api.get(`/users/${login}`).then((response)=>{
@@ -38,31 +36,33 @@ const MemberDetails:React.FC = () => {
 
     return (
         <>
-            <USerInfo>
-                <header>
-                    <img src={User?.avatar_url} alt='avatar'  />
-                    <div>
-                        <strong>{User?.login}</strong>
-                    </div>
-                </header>
-                <ul>
-                    <li>
-                        <strong>{User?.public_repos}</strong>
-                        <span>Repositórios;</span>
-                    </li>
-                    <li>
-                        <strong>{User?.followers}</strong>
-                        <span>Seguidores</span>
-                    </li>
-                    <li>
-                        <strong>{User?.created_at}</strong>
-                        <span>Data de criação</span>
-                    </li>
-                </ul>
-            </USerInfo>
+            {user && (
+                <USerInfo>
+                    <header>
+                        <img src={user.avatar_url} alt='avatar'  />
+                        <div>
+                            <strong>{user.login}</strong>
+                        </div>
+                    </header>
+                    <ul>
+                        <li>
+                            <strong>{user.public_repos}</strong>
+                            <span>Repositórios;</span>
+                        </li>
+                        <li>
+                            <strong>{user.followers}</strong>
+                            <span>Seguidores</span>
+                        </li>
+                        <li>
+                            <strong>{dateFormat(user.created_at)}</strong>
+                            <span>Data de criação</span>
+                        </li>
+                    </ul>
+                </USerInfo>
+            )}
             <Title>Seguidores</Title>
             {followers.map(member=>(
-                <Card key={member.login} urlImg={member.avatar_url} login={member.login} path={`/users/${member.login}`}  />
+                <Card key={member.login} urlImg={member.avatar_url} name={member.login} path={`/users/${member.login}`}  />
             ))}
         </>
     )

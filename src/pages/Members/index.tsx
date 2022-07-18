@@ -13,6 +13,7 @@ interface Members{
 
 const Members:React.FC = () => {
     const [Members,setMembers] = useState<Members[]>([])
+    const [oldMemembers,setOldMemembers] = useState<Members[]>([])
     const [search,setSearch] = useState('')
     const [error,setError] = useState('')
 
@@ -23,6 +24,7 @@ const Members:React.FC = () => {
         try {
             const response = await api.get(`orgs/${org}/public_members`)
             setMembers(response.data)
+            setOldMemembers(response.data)
         }catch (e) {
             setError(MessagesError.API_FAIL_MEMBER_GROUP)
         }
@@ -30,14 +32,13 @@ const Members:React.FC = () => {
     }
 
     function filterMembers(value:string){
-
         setSearch(value)
         const newMembers = Members.filter(item => {
         const itemData = item.login.toUpperCase()
         const textValue = value.toUpperCase()
         return itemData.indexOf(textValue) > -1
         })
-        setMembers(newMembers)
+        setOldMemembers(newMembers)
     }
 
     useEffect( () => {
@@ -48,8 +49,8 @@ const Members:React.FC = () => {
         <>
             <Title>Membros</Title>;
             <InputSearch value={search} onChange={(value)=>filterMembers(value.target.value)} name='search'  />
-            {Members.map(member=>(
-                <Card key={member.login} urlImg={member.avatar_url} login={member.login} path={`/users/${member.login}`} isIcon={true} />
+            { oldMemembers.map(member=>(
+                <Card key={member.login} urlImg={member.avatar_url} name={member.login} path={`/users/${member.login}`} isIcon={true} />
             ))}
             {error && <Error>{error}</Error> }
         </>
