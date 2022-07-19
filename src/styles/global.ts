@@ -3,6 +3,13 @@ import styled from "styled-components";
 
 export default createGlobalStyle`
   
+  #observever{
+    height: 50px;
+    list-style: none;
+    
+    background-color: transparent;
+  }
+  
   :root{
     --background: #F0F0F5;
     --dark:#000;
@@ -53,7 +60,6 @@ export const Error = styled.div`
   color: var(--title);
   display: flex;
   align-items: center;
-  justify-content: center;
 `
 
 

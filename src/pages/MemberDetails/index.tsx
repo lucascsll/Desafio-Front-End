@@ -8,16 +8,16 @@ import {dateFormat} from "../../helpers/data.format";
 
 
 interface Users{
-    avatar_url:string;
-    login:string,
-    followers:string;
-    public_repos:string,
-    created_at:string;
+ avatar_url:string;
+ login:string,
+ followers:string;
+ public_repos:string,
+ created_at:string;
 }
 
 interface Followers{
-    avatar_url:string;
-    login:string,
+ avatar_url:string;
+ login:string,
 }
 
 const MemberDetails:React.FC = () => {
@@ -32,7 +32,7 @@ const MemberDetails:React.FC = () => {
         api.get(`/users/${login}/followers`).then((response)=>{
             setfollowers(response.data)
         })
-    },[])
+    },[login])
 
     return (
         <>

@@ -6,25 +6,31 @@ import api from "../../services/api";
 import {useParams} from "react-router-dom";
 import {MessagesError} from "../../helpers/messages.helper";
 
-interface Members{
+interface Member{
     avatar_url:string;
     login:string
 }
 
 const Members:React.FC = () => {
-    const [Members,setMembers] = useState<Members[]>([])
-    const [oldMemembers,setOldMemembers] = useState<Members[]>([])
+    const [members,setMembers] = useState<Member[]>([])
+    const [page,setPage ] = useState(0)
+    const [oldMemembers,setOldMemembers] = useState<Member[]>([])
     const [search,setSearch] = useState('')
     const [error,setError] = useState('')
 
     let { org } : any  = useParams();
 
     async function fetch():Promise<void>{
-
         try {
-            const response = await api.get(`orgs/${org}/public_members`)
-            setMembers(response.data)
-            setOldMemembers(response.data)
+            const response = await api.get(`orgs/${org}/public_members`,{
+                params:{
+                    per_page:10,
+                    page:page,
+                    order: 'DESC',
+                }
+            })
+            setMembers([...members,...response.data])
+            setOldMemembers([...oldMemembers,...response.data])
         }catch (e) {
             setError(MessagesError.API_FAIL_MEMBER_GROUP)
         }
@@ -33,7 +39,7 @@ const Members:React.FC = () => {
 
     function filterMembers(value:string){
         setSearch(value)
-        const newMembers = Members.filter(item => {
+        const newMembers = members.filter(item => {
         const itemData = item.login.toUpperCase()
         const textValue = value.toUpperCase()
         return itemData.indexOf(textValue) > -1
@@ -42,8 +48,23 @@ const Members:React.FC = () => {
     }
 
     useEffect( () => {
-        fetch()
-    },[])
+        const  intersectionObserver = new IntersectionObserver((entries)=>{
+            if(entries.some((props)=>props.isIntersecting)){
+                setPage((currentPage) => currentPage + 1 )
+            }
+        })
+        intersectionObserver.observe(document.querySelector('#observever')!)
+        return () => intersectionObserver.disconnect()
+    },[org])
+
+    useEffect(() => {
+        if (page > 0 ) {
+            const loadMembers = async () => {
+                await fetch();
+            };
+            loadMembers();
+        }
+    }, [page]);
 
     return(
         <>
@@ -53,6 +74,8 @@ const Members:React.FC = () => {
                 <Card key={member.login} urlImg={member.avatar_url} name={member.login} path={`/users/${member.login}`} isIcon={true} />
             ))}
             {error && <Error>{error}</Error> }
+                <li id="observever">
+                </li>
         </>
     )
 };
