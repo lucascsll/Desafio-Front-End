@@ -6,6 +6,9 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 In the project directory, you can run:
 
+### `URL PRODUCTION`
+Open [https://frontend-loog.herokuapp.com/) to view it in the browser.
+
 ### `npm start`
 
 Runs the app in the development mode.\
